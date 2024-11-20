@@ -14,11 +14,6 @@
 #ifndef HIKE_H
 #define HIKE_H
 
-
-#include <string>
-
-using namespace std;
-
 class Hike
 {
     public:
