@@ -9,8 +9,9 @@ using namespace std;
 class Member
 {
 public:
-	Member(string newFirst, string newLast)
-			: firstName(newFirst), lastName(newLast), id(0), points(0) {}
+	
+	Member(string newFirst, string newLast) 
+		: firstName(newFirst),lastName(newLast), id(0), points(0) {}
 
 	void addPoints(int morePoints);
 

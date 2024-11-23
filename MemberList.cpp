@@ -7,16 +7,16 @@ MemberList::MemberList()
 	memberList = new set<Member>();
 }
 
-void MemberList::addMember(const string &firstName, const string &lastName)
+void MemberList::addMember(const string& firstName, const string& lastName)
 {
 	Member newMember(firstName, lastName);
 	newMember.setID(INITIAL_ID);
 	memberList->insert(newMember);
-
+	
 	INITIAL_ID++;
 }
 
-void MemberList::addMember(const string &firstName, const string &lastName, int points)
+void MemberList::addMember(const string& firstName, const string& lastName, int points)
 {
 	Member newMember(firstName, lastName);
 	newMember.setID(INITIAL_ID);
