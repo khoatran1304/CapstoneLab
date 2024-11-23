@@ -4,11 +4,13 @@
 #include <string>
 #include <iostream>
 
+using namespace std;
+
 class Member
 {
 public:
 	
-	Member(std::string newFirst, std::string newLast) 
+	Member(string newFirst, string newLast) 
 		: firstName(newFirst),lastName(newLast), id(0), points(0) {}
 
 	void addPoints(int morePoints);
@@ -17,18 +19,20 @@ public:
 
 	int getID() const;
 
-	std::string getLastName() const;
+	string getLastName() const;
 
 	int getPoints() const;
 
 	void printMember() const;
 
+	bool operator<(const Member& other);
+
+
+
 private:
 	int id;
-	std::string firstName;
-	std::string lastName;
+	string firstName;
+	string lastName;
 	int points;
 };
-
-
 #endif

@@ -14,15 +14,20 @@
 #ifndef HIKE_H
 #define HIKE_H
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 class Hike
 {
     public:
-        Hike(const string& theLocation,const string& theHikeName, int theDuration, char theDifficulty);
+        Hike(const string& theLocation, const string& theHikeName, int theDuration, char theDifficulty);
         string getLocation() const;
         int getDuration() const;
         char getDifficulty() const;
         string getHikeName() const;
-        friend ostream&  operator<<(ostream& out,const Hike& aHike);
+        friend ostream& operator<<(ostream& out, const Hike& aHike);
 
     private:
         string location;
