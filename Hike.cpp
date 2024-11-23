@@ -1,28 +1,29 @@
 /*
-	Minh Team
+    Minh Team
 
-	Tran, Minh (Team Leader)
-	Lastname, Firstname // member 2
-	Lastname, Firstname // member 3 and so on
+    Tran, Minh (Team Leader)
+    Lastname, Firstname // member 2
+    Lastname, Firstname // member 3 and so on
 
-	Fall 2024
-	CS A250 - C++ 2
+    Fall 2024
+    CS A250 - C++ 2
 
-	Outdoor Adventures - Part A
+    Outdoor Adventures - Part A
 */
 
-#include<iostream>
+#include <iostream>
 
 #include "Hike.h"
 
 using namespace std;
 
-ostream& operator<<(ostream& out, const Hike& aHike) 
+ostream &operator<<(ostream &out, const Hike &aHike)
 {
     string difficultyDisplay;
 
     // Map difficulty character to a string representation
-    switch (aHike.difficulty) {
+    switch (aHike.difficulty)
+    {
     case 'e':
         difficultyDisplay = "easy";
         break;
@@ -45,31 +46,33 @@ ostream& operator<<(ostream& out, const Hike& aHike)
     return out;
 }
 
-
-
-
-Hike::Hike(const string& theLocation, const string& theHikeName, int theDuration, char theDifficulty)
-	: location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty)
+Hike::Hike(const string &theLocation, const string &theHikeName, int theDuration, char theDifficulty)
+    : location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty)
 {
-	//more logic
+    // more logic
 }
 
 string Hike::getLocation() const
 {
-	return location;
+    return location;
 }
 
 int Hike::getDuration() const
 {
-	return duration;
+    return duration;
 }
 
 char Hike::getDifficulty() const
 {
-	return difficulty;
+    return difficulty;
 }
 
 string Hike::getHikeName() const
 {
-	return hikeName;
+    return hikeName;
+}
+
+bool Hike::operator<(const Hike &other) const
+{
+    return location < other.location;
 }

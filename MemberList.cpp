@@ -1,5 +1,7 @@
 #include "MemberList.h"
 
+int INITIAL_ID = 111; // Define the variable here
+
 MemberList::MemberList()
 {
 	memberList = new set<Member>();
@@ -31,26 +33,26 @@ int MemberList::getLastID() const
 
 int MemberList::getPoints(int memberID) const
 {
-	auto iter = find_if
-				(
-					memberList->begin(), 
-					memberList->end(), 
-					[memberID](Member member) { return member.getID() == memberID; }
-				);
+	auto iter = find_if(
+			memberList->begin(),
+			memberList->end(),
+			[memberID](Member member)
+			{ return member.getID() == memberID; });
 
-	if (iter != memberList->end()) 
+	if (iter != memberList->end())
 	{
 		return iter->getPoints();
 	}
 
-	return 0;	//Should we change to -1 ( this mean undetect the user )
+	return 0; // Should we change to -1 ( this mean undetect the user )
 }
 
-void MemberList::printMember(int memberID, const string& lastName) const
+void MemberList::printMember(int memberID, const string &lastName) const
 {
-	auto iter = find_if(memberList->begin(), memberList->end(), [memberID](Member member) { return member.getID() == memberID; });
+	auto iter = find_if(memberList->begin(), memberList->end(), [memberID](Member member)
+											{ return member.getID() == memberID; });
 
-	if(iter != memberList->end() && iter->getLastName() == lastName)
+	if (iter != memberList->end() && iter->getLastName() == lastName)
 	{
 		iter->printMember();
 		cout << "\t" << "Membership # " << memberID << "\n";
@@ -66,4 +68,3 @@ MemberList::~MemberList()
 {
 	delete memberList;
 }
-
