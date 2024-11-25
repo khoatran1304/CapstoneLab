@@ -14,7 +14,7 @@ public:
 		: firstName(newFirst),lastName(newLast), id(0), points(0) {}
 
 	void addPoints(int morePoints);
-	
+
 	void setID(int newID);
 
 	int getID() const;
@@ -25,9 +25,7 @@ public:
 
 	void printMember() const;
 
-	bool operator<(const Member& other);
-
-
+	bool operator<(const Member &other) const;
 
 private:
 	int id;

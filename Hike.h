@@ -21,19 +21,20 @@ using namespace std;
 
 class Hike
 {
-    public:
-        Hike(const string& theLocation, const string& theHikeName, int theDuration, char theDifficulty);
-        string getLocation() const;
-        int getDuration() const;
-        char getDifficulty() const;
-        string getHikeName() const;
-        friend ostream& operator<<(ostream& out, const Hike& aHike);
+public:
+    Hike(const string &theLocation, const string &theHikeName, int theDuration, char theDifficulty);
+    string getLocation() const;
+    int getDuration() const;
+    char getDifficulty() const;
+    string getHikeName() const;
+    friend ostream &operator<<(ostream &out, const Hike &aHike);
+    bool operator<(const Hike &other) const;
 
-    private:
-        string location;
-        string hikeName;
-        int duration;
-        char difficulty;
+private:
+    string location;
+    string hikeName;
+    int duration;
+    char difficulty;
 };
 
 #endif

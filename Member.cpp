@@ -30,10 +30,10 @@ int Member::getPoints() const
 void Member::printMember() const
 {
 	cout << "\t" << lastName << ", " << firstName << "\n"
-		 << "\t" << "Points available : " << points << "\n";
+			 << "\t" << "Points available : " << points << "\n";
 }
 
-bool Member::operator<(const Member& other)
+bool Member::operator<(const Member &other) const
 {
 	return id < other.id;
 }
