@@ -66,5 +66,10 @@ void MemberList::clearList()
 
 MemberList::~MemberList()
 {
-	delete memberList;
+	if (memberList)
+	{
+		memberList->clear();
+		delete memberList;
+		memberList = nullptr;
+	}
 }

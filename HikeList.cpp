@@ -71,7 +71,8 @@ void HikeList::printByLocation(const string &location) const
                               { return pair.first.getLocation() == location; });
         if (currentIter != endIter)
         {
-            cout << currentIter->first << " Price (per person): $ " << currentIter->second << "\n";
+            cout << currentIter->first 
+                 << "\t" << "  " << fixed << setprecision(2) << "Price (per person): $ " << currentIter->second << "\n";
             ++currentIter;
         }
     }
@@ -114,7 +115,7 @@ void HikeList::printByDifficulty(char difficulty) const
         if (hikePair.first.getDifficulty() == difficulty)
         {
             cout << "\t" << "(" << difficulty << ") "
-                 << hikePair.first.getHikeName() + ", " + hikePair.first.getLocation();
+                 << hikePair.first.getHikeName() + ", " + hikePair.first.getLocation() << "\n";
         }
     }
 }
@@ -132,9 +133,9 @@ void HikeList::printByPrice() const
 
     for (const auto &pair : tempMultimap)
     {
-        cout << "\t" << setw(5) << "$"
-             << fixed << setprecision(2) << pair.first
-             << " - " << pair.second.first << " (" << pair.second.second << ")\n";
+        cout << "\t" 
+            << "$" << setw(8) << right << fixed << setprecision(2) << pair.first
+            << " - " << pair.second.first << " (" << pair.second.second << ")\n";
     }
 }
 
@@ -148,7 +149,8 @@ void HikeList::printByHikeName(const string &hikeName) const
 
     if (iter != hikeList.end())
     {
-        cout << iter->first << " $" << fixed << setprecision(2) << iter->second << "\n";
+        cout << iter->first 
+             << "\t" << "  " << "$" << fixed << setprecision(2) << iter->second << "\n";
     }
 }
 

@@ -17,7 +17,7 @@
 
 using namespace std;
 
-ostream &operator<<(ostream &out, const Hike &aHike)
+ostream& operator<<(ostream& out, const Hike& aHike)
 {
     string difficultyDisplay;
 
@@ -40,11 +40,12 @@ ostream &operator<<(ostream &out, const Hike &aHike)
 
     // Format and output the hike details
     out << "\t" << aHike.hikeName << " (" << aHike.location << ")" << "\n"
-        << " Difficulty: " << difficultyDisplay << "\n"
-        << " Duration: " << aHike.duration << " day(s)" << "\n";
+        << "\t" << "  Difficulty: " << difficultyDisplay << "\n"
+        << "\t" << "  Duration: " << aHike.duration << " day(s)" << "\n";
 
     return out;
 }
+
 
 Hike::Hike(const string &theLocation, const string &theHikeName, int theDuration, char theDifficulty)
     : location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty)

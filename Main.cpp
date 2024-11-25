@@ -6,11 +6,12 @@
 
 using namespace std;
 
+
 int main()
 {
     // Test Case 1: Adding Members
     MemberList memberList;
-    memberList.addMember("John", "Doe");
+    memberList.addMember("Grandma", "Gatewood", 25876);
     memberList.addMember("Jane", "Smith", 150);
     memberList.addMember("Alice", "Wonderland", 200);
     memberList.addMember("Bob", "Builder");
@@ -19,62 +20,59 @@ int main()
     memberList.addMember("Eve", "Apple", 250);
 
     cout << "Member 1 details:\n";
-    memberList.printMember(111, "Doe");
+    memberList.printMember(111, "Gatewood");
     cout << "\nMember 2 details:\n";
     memberList.printMember(112, "Smith");
     cout << "\nMember 3 details:\n";
     memberList.printMember(113, "Wonderland");
-    cout << "\nMember 4 details:\n";
-    memberList.printMember(114, "Builder");
-    cout << "\nMember 5 details:\n";
-    memberList.printMember(115, "Brown");
-    cout << "\nMember 6 details:\n";
-    memberList.printMember(116, "Gale");
-    cout << "\nMember 7 details:\n";
-    memberList.printMember(117, "Apple");
+
 
     // Test Case 2: Adding Points to Members
-    Member member("Alice", "Wonderland");
-    member.addPoints(200);
+    Member member("Jane", "Smith");
+    member.addPoints(350);
     cout << "\nMember points: " << member.getPoints() << endl;
 
     // Test Case 3: Printing All Hike Locations
     HikeList hikeList;
-    hikeList.addHike("Yellowstone", "Eagle Peak", 3, 's', 299.99);
-    hikeList.addHike("Yosemite", "Half Dome", 2, 'm', 199.99);
-    hikeList.addHike("Grand Canyon", "Bright Angel Trail", 4, 's', 399.99);
-    hikeList.addHike("Zion", "Angels Landing", 1, 'm', 149.99);
-    hikeList.addHike("Rocky Mountain", "Longs Peak", 5, 's', 499.99);
-    hikeList.addHike("Acadia", "Precipice Trail", 1, 's', 129.99);
-    hikeList.addHike("Glacier", "Highline Trail", 3, 'm', 279.99);
-    hikeList.addHike("Olympic", "Hoh River Trail", 2, 'e', 179.99);
+    hikeList.addHike("Alaska", "Flattop Mountain Trail", 1, 'm', 1280);
+    hikeList.addHike("Arizona", "South Kaibab Trail", 6, 'd', 4800);
+    hikeList.addHike("Georgia", "Blood Mountain via Appalachian Trail", 4, 'm', 1500);
+    hikeList.addHike("Maine", "Precipice Trail", 2, 'd', 1000);
+    hikeList.addHike("Minnesota", "Oberg Mountain Loop", 2, 'e', 230);
+    hikeList.addHike("Montana", "Glacier", 4, 'e', 3990.00);
+    hikeList.addHike("Utah", "Arches", 3, 'm', 1488);
+    hikeList.addHike("Utah", "Zion", 3, 's', 334);
+    hikeList.addHike("Virginia", "Old Rag Mountain Loop", 9, 'd', 2380);
+    hikeList.addHike("Washington", "Rattlesnake Ledge Trail", 4, 'm', 1160);
+    hikeList.addHike("Wyoming", "Cascade Canyon Trail", 9, 'm', 1100);
+    hikeList.addHike("California", "Yosemite", 6, 'm', 3099.00);
+    hikeList.addHike("California", "Redwood", 2, 'e', 245.00);
+
 
     cout << "\nAll hike locations:\n";
     hikeList.printAllLocations();
 
-    // Test Case 4: Printing Hikes by Location
-    cout << "\nHikes by location (Yosemite):\n";
-    hikeList.printByLocation("Yosemite");
+    cout << "\nHikes by location (California):\n";
+    hikeList.printByLocation("California");
 
-    // Test Case 5: Printing Hikes by Duration
+    cout << "\nHikes by duration:\n";
+    hikeList.printByDuration();
+
     cout << "\nHikes by duration (3 days):\n";
     hikeList.printByDuration(3);
 
-    // Test Case 6: Printing Hikes by Difficulty
-    cout << "\nHikes by difficulty (strenuous):\n";
-    hikeList.printByDifficulty('s');
+    cout << "\nHikes by difficulty (easy):\n";
+    hikeList.printByDifficulty('e');
 
-    // Test Case 7: Printing Hikes by Price
     cout << "\nHikes by price:\n";
     hikeList.printByPrice();
 
-    // Test Case 8: Printing Hikes by Name
-    cout << "\nDetails for hike 'Eagle Peak':\n";
-    hikeList.printByHikeName("Eagle Peak");
+    cout << "\nDetails for hike 'Yosemite':\n";
+    hikeList.printByHikeName("Yosemite");
 
     // Test Case 9: Getting the Price of a Hike
-    double price = hikeList.getPrice("Half Dome");
-    cout << "Price for 'Half Dome': $" << price << endl;
+    double price = hikeList.getPrice("Zion");
+    cout << "\nPrice for 'Zion': $" << price << endl;
 
     // Test Case 10: Clearing Lists
     memberList.clearList();
@@ -83,3 +81,4 @@ int main()
 
     return 0;
 }
+
