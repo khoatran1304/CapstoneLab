@@ -11,16 +11,18 @@
     Outdoor Adventures
 */
 
-#include <iostream>
-
 #include "Hike.h"
 #include "HikeList.h"
 #include "Member.h"
 #include "MemberList.h"
+#include "Reservations.h"
+
+#include <iostream>
+#include <cassert>
 
 using namespace std;
 
-int main()
+void testDefaultImplementations()
 {
   // Test Case 1: Adding Members
   MemberList memberList;
@@ -90,7 +92,90 @@ int main()
   // Test Case 10: Clearing Lists
   memberList.clearList();
   hikeList.clearList();
+  hikeList.printAllLocations();
   cout << "\nMember list and hike list cleared.\n";
 
+  memberList.printMember(111, "Gatewood");
+  hikeList.printAllLocations();
+}
+
+void testReservations()
+{
+  // Create HikeList and MemberList
+  HikeList hikeList;
+  MemberList memberList;
+
+  // Add sample hikes to HikeList
+  hikeList.addHike("California", "Yosemite", 6, 'M', 3099.00);
+  hikeList.addHike("Wyoming", "Yellowstone", 5, 'M', 2599.00);
+  hikeList.addHike("Montana", "Glacier", 4, 'H', 2299.00);
+
+  // Add sample members to MemberList
+  memberList.addMember("Grandma", "Gatewood", 25800);
+  memberList.addMember("Jane", "Smith", 150);
+  memberList.addMember("John", "Doe", 300);
+
+  // Create Reservations
+  Reservations reservations;
+
+  // Add reservations
+  int res1 = reservations.addReservation(111, "Yosemite");
+  int res2 = reservations.addReservation(112, "Yellowstone");
+  int res3 = reservations.addReservation(113, "Glacier");
+
+  // Test reservation numbers
+  assert(res1 == 50001);
+  std::cout << "Assertion passed: res1 == 50001\n";
+  assert(res2 == 50002);
+  std::cout << "Assertion passed: res2 == 50002\n";
+  assert(res3 == 50003);
+  std::cout << "Assertion passed: res3 == 50003\n";
+
+  // Test printReservation (visually check the output)
+  std::cout << "Reservation 1 details:\n";
+  reservations.printReservation(res1, hikeList, memberList);
+
+  std::cout << "Reservation 2 details:\n";
+  reservations.printReservation(res2, hikeList, memberList);
+
+  std::cout << "Reservation 3 details:\n";
+  reservations.printReservation(res3, hikeList, memberList);
+
+  // Test cancelReservation - middle node
+  reservations.cancelReservation(res2);
+  std::cout << "Cancelled Reservation 2\n";
+  std::cout << "Cancelled Reservation 2 details (should be empty):\n";
+  reservations.printReservation(res2, hikeList, memberList);
+
+  // Test cancelReservation - first node
+  reservations.cancelReservation(res1);
+  std::cout << "Cancelled Reservation 1\n";
+  std::cout << "Cancelled Reservation 1 details (should be empty):\n";
+  reservations.printReservation(res1, hikeList, memberList);
+
+  // Test cancelReservation - last node
+  reservations.cancelReservation(res3);
+  std::cout << "Cancelled Reservation 3\n";
+  std::cout << "Cancelled Reservation 3 details (should be empty):\n";
+  reservations.printReservation(res3, hikeList, memberList);
+
+  // Clear list and check count
+  reservations.clearList();
+  assert(reservations.printCount() == 0);
+  std::cout << "Assertion passed: reservations.printCount() == 0\n";
+
+  // Test adding reservations after clearing list
+  int res4 = reservations.addReservation(111, "Yosemite");
+  int res5 = reservations.addReservation(112, "Yellowstone");
+  assert(res4 == 50001);
+  std::cout << "Assertion passed: res4 == 50001\n";
+  assert(res5 == 50002);
+  std::cout << "Assertion passed: res5 == 50002\n";
+}
+
+int main()
+{
+  testDefaultImplementations();
+  testReservations();
   return 0;
 }

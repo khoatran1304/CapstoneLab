@@ -72,13 +72,16 @@ void MemberList::printMember(int memberID,
 	}
 }
 
-void MemberList::clearList() { memberList->clear(); }
-
-MemberList::~MemberList()
+void MemberList::clearList()
 {
 	if (memberList)
 	{
 		delete memberList;
 		memberList = nullptr;
 	}
+}
+
+MemberList::~MemberList()
+{
+	clearList();
 }
