@@ -1,56 +1,52 @@
 /*
-	Tired Asians
+				Tired Asians
 
-	Tran, Minh (Team Leader)
-	Tran, Tim // member 2
-	Nguyen, Huy // member 3 and so on
+				Tran, Minh (Team Leader)
+				Tran, Tim // member 2
+				Nguyen, Huy // member 3 and so on
 
-	Fall 2024
-	CS A250 - C++ 2
+				Fall 2024
+				CS A250 - C++ 2
 
-	Outdoor Adventures
+				Outdoor Adventures
 */
 
 #include "MemberList.h"
 
-int INITIAL_ID = 111; // Define the variable here
+using namespace std;
 
-MemberList::MemberList()
-{
-	memberList = new set<Member>();
-}
+int initialID = INITIAL_MEMBER_ID;
 
-void MemberList::addMember(const string& firstName, const string& lastName)
+void MemberList::addMember(const string &firstName,
+													 const string &lastName)
 {
 	Member newMember(firstName, lastName);
-	newMember.setID(INITIAL_ID);
+	newMember.setID(initialID);
 	memberList->insert(newMember);
-	
-	INITIAL_ID++;
+
+	initialID++;
 }
 
-void MemberList::addMember(const string& firstName, const string& lastName, int points)
+void MemberList::addMember(const string &firstName,
+													 const string &lastName, int points)
 {
 	Member newMember(firstName, lastName);
-	newMember.setID(INITIAL_ID);
+	newMember.setID(initialID);
 	newMember.addPoints(points);
 	memberList->insert(newMember);
 
-	INITIAL_ID++;
+	initialID++;
 }
 
-int MemberList::getLastID() const
-{
-	return INITIAL_ID - 1;
-}
+int MemberList::getLastID() const { return initialID - 1; }
 
 int MemberList::getPoints(int memberID) const
 {
-	auto iter = find_if(
-			memberList->begin(),
-			memberList->end(),
-			[memberID](Member member)
-			{ return member.getID() == memberID; });
+	auto iter = find_if(memberList->begin(), memberList->end(),
+											[memberID](Member member)
+											{
+												return member.getID() == memberID;
+											});
 
 	if (iter != memberList->end())
 	{
@@ -60,10 +56,14 @@ int MemberList::getPoints(int memberID) const
 	return 0; // Should we change to -1 ( this mean undetect the user )
 }
 
-void MemberList::printMember(int memberID, const string &lastName) const
+void MemberList::printMember(int memberID,
+														 const string &lastName) const
 {
-	auto iter = find_if(memberList->begin(), memberList->end(), [memberID](Member member)
-											{ return member.getID() == memberID; });
+	auto iter = find_if(memberList->begin(), memberList->end(),
+											[memberID](Member member)
+											{
+												return member.getID() == memberID;
+											});
 
 	if (iter != memberList->end() && iter->getLastName() == lastName)
 	{
@@ -72,16 +72,12 @@ void MemberList::printMember(int memberID, const string &lastName) const
 	}
 }
 
-void MemberList::clearList()
-{
-	memberList->clear();
-}
+void MemberList::clearList() { memberList->clear(); }
 
 MemberList::~MemberList()
 {
 	if (memberList)
 	{
-		memberList->clear();
 		delete memberList;
 		memberList = nullptr;
 	}

@@ -11,69 +11,52 @@
     Outdoor Adventures - Part A
 */
 
-#include <iostream>
-
 #include "Hike.h"
+
+#include <iostream>
 
 using namespace std;
 
-ostream& operator<<(ostream& out, const Hike& aHike)
+ostream &operator<<(ostream &out, const Hike &aHike)
 {
-    string difficultyDisplay;
+  string difficultyDisplay;
 
-    // Map difficulty character to a string representation
-    switch (aHike.difficulty)
-    {
-    case 'e':
-        difficultyDisplay = "easy";
-        break;
-    case 'm':
-        difficultyDisplay = "moderate";
-        break;
-    case 's':
-        difficultyDisplay = "strenuous";
-        break;
-    default:
-        difficultyDisplay = "unknown"; // Handle unexpected values
-        break;
-    }
+  // Map difficulty character to a string representation
+  switch (aHike.difficulty)
+  {
+  case 'e':
+    difficultyDisplay = "easy";
+    break;
+  case 'm':
+    difficultyDisplay = "moderate";
+    break;
+  case 's':
+    difficultyDisplay = "strenuous";
+    break;
+  default:
+    difficultyDisplay = "unknown"; // Handle unexpected values
+    break;
+  }
 
-    // Format and output the hike details
-    out << "\t" << aHike.hikeName << " (" << aHike.location << ")" << "\n"
-        << "\t" << "  Difficulty: " << difficultyDisplay << "\n"
-        << "\t" << "  Duration: " << aHike.duration << " day(s)" << "\n";
+  // Format and output the hike details
+  out << "\t" << aHike.hikeName << " (" << aHike.location << ")"
+      << "\n"
+      << "\t" << "  Difficulty: " << difficultyDisplay << "\n"
+      << "\t" << "  Duration: " << aHike.duration << " day(s)"
+      << "\n";
 
-    return out;
+  return out;
 }
 
+string Hike::getLocation() const { return location; }
 
-Hike::Hike(const string &theLocation, const string &theHikeName, int theDuration, char theDifficulty)
-    : location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty)
-{
-    // more logic
-}
+int Hike::getDuration() const { return duration; }
 
-string Hike::getLocation() const
-{
-    return location;
-}
+char Hike::getDifficulty() const { return difficulty; }
 
-int Hike::getDuration() const
-{
-    return duration;
-}
-
-char Hike::getDifficulty() const
-{
-    return difficulty;
-}
-
-string Hike::getHikeName() const
-{
-    return hikeName;
-}
+string Hike::getHikeName() const { return hikeName; }
 
 bool Hike::operator<(const Hike &other) const
 {
-    return location < other.location;
+  return location < other.location;
 }

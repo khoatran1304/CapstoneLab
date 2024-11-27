@@ -10,31 +10,33 @@
 
     Outdoor Adventures
 */
- 
+
 #ifndef HIKE_H
 #define HIKE_H
 
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 class Hike
 {
+  friend std::ostream &operator<<(std::ostream &out, const Hike &aHike);
+
 public:
-    Hike(const string &theLocation, const string &theHikeName, int theDuration, char theDifficulty);
-    string getLocation() const;
-    int getDuration() const;
-    char getDifficulty() const;
-    string getHikeName() const;
-    friend ostream &operator<<(ostream &out, const Hike &aHike);
-    bool operator<(const Hike &other) const;
+  Hike(const std::string &theLocation, const std::string &theHikeName, int theDuration, char theDifficulty)
+      : location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty) {}
+
+  std::string getLocation() const;
+  int getDuration() const;
+  char getDifficulty() const;
+  std::string getHikeName() const;
+
+  bool operator<(const Hike &other) const;
 
 private:
-    string location;
-    string hikeName;
-    int duration;
-    char difficulty;
+  std::string location;
+  std::string hikeName;
+  int duration;
+  char difficulty;
 };
 
 #endif
