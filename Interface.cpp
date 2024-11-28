@@ -27,8 +27,8 @@ void processReservation(const HikeList &hikeList, MemberList &memberList, Reserv
   {
     displayMenu();
     cout << "Please make a selection: ";
-    cin >> choice; 
-    cout << choice << "\n";
+    cin >> choice;
+    cout << "\n";
 
     if (choice == 1)
     {
@@ -85,16 +85,21 @@ void chooseByLocation(const HikeList &hikeList, MemberList &memberList, Reservat
 
   cout << "\n";
   hikeList.printByLocation(location);
-  cout << "\n";
   askToReserve(hikeList, memberList, reservations);
 }
 
 void chooseByDuration(const HikeList &hikeList, MemberList &memberList, Reservations &reservations)
 {
+  cout << "\t(days)" << endl;
   hikeList.printByDuration();
-  cout << "Enter number of days: ";
+
+  cout << "\n";
+  cout << "How many days are you considering? ";
+
   int days;
   cin >> days;
+
+  cout << "\n";
   hikeList.printByDuration(days);
   askToReserve(hikeList, memberList, reservations);
 }
@@ -113,9 +118,11 @@ void chooseByDifficulty(const HikeList &hikeList, MemberList &memberList, Reserv
   // it prints the char and we don't want it to.
   cin.ignore();
 
-  if (difficulty == 'e' || difficulty == 'm' || difficulty == 's')
+  auto tolowerDifficulty = tolower(difficulty);
+
+  if (tolowerDifficulty == 'e' || tolowerDifficulty == 'm' || tolowerDifficulty == 's')
   {
-    cout << "Your choice: " << difficulty << "\n";
+    cout << "Your choice: " << tolowerDifficulty << "\n";
   }
   else
   {
@@ -126,7 +133,6 @@ void chooseByDifficulty(const HikeList &hikeList, MemberList &memberList, Reserv
   cout << "\n";
   cout << "\t(difficulty level)" << endl;
   hikeList.printByDifficulty(difficulty);
-  cout << "\n";
   askToReserve(hikeList, memberList, reservations);
 }
 
@@ -142,14 +148,20 @@ int askIfMember(MemberList &memberList)
   cout << "Are you a member? (y/n): ";
   cin >> isMember;
 
-  if (isMember == 'y' || isMember == 'Y')
+  if (tolower(isMember) == 'y')
   {
     int memberID;
     string lastName;
+
+    cout << "\n";
     cout << "Enter your member ID: ";
     cin >> memberID;
+
+    cout << "\n";
     cout << "Enter your last name: ";
     cin >> lastName;
+
+    cout << "\n";
     memberList.printMember(memberID, lastName);
     return memberID;
   }
@@ -162,30 +174,43 @@ int askIfMember(MemberList &memberList)
 int addNewMember(MemberList &memberList)
 {
   string firstName, lastName;
-  cout << "Enter your first name: ";
+
+  cout << "\t Let's add you to the member list! \n";
+
+  cout << "\t\t Enter your first name: ";
   cin >> firstName;
-  cout << "Enter your last name: ";
+
+  cout << "\t\t Enter your last name: ";
   cin >> lastName;
+  cout << "\n";
+
   memberList.addMember(firstName, lastName);
   int newID = memberList.getLastID();
-  cout << "Welcome, " << firstName << "! Your new member ID is " << newID << ".\n";
+
+  cout << "\t Welcome to the club! " << "\n"
+       << "\t\t Your new member ID is: " << newID << "\n";
   return newID;
 }
 
 void makeReservation(const HikeList &hikeList, MemberList &memberList, Reservations &reservations)
 {
   int memberID = askIfMember(memberList);
-  cout << "Which hike would you like to reserve? ";
+  cout << "Which hike would you like to reserve (hike name)? ";
   string hikeName;
   cin.ignore();
   getline(cin, hikeName);
+
+  cout << "\n";
+
   hikeList.printByHikeName(hikeName);
-  double price = hikeList.getPrice(hikeName);
-  int points = memberList.getPoints(memberID);
-  double discountedPrice = price - (points / 100.0);
-  cout << "Discounted price using points: $" << fixed << setprecision(2) << discountedPrice << "\n";
-  reservations.addReservation(memberID, hikeName);
-  cout << "Please make a note of your reservation number. Scheduling and payment will be processed next.\n";
+  int reservationNo = reservations.addReservation(memberID, hikeName);
+
+  cout << "\n"
+       << "\t Before proceeding, please make note of your reservation number. \n"
+       << "\t    Reservation #: " << reservationNo << "\n\n"
+       << "( *** Will continue to scheduling and payment. *** )\n";
+
+  showAnyKeysToContinue();
 }
 
 void viewReservation(const HikeList &hikeList, const MemberList &memberList, const Reservations &reservations)
@@ -194,6 +219,7 @@ void viewReservation(const HikeList &hikeList, const MemberList &memberList, con
   cout << "Enter your reservation number: ";
   cin >> reservation;
   reservations.printReservation(reservation, hikeList, memberList);
+  showAnyKeysToContinue();
 }
 
 void cancelReservation(const HikeList &hikeList, MemberList &memberList, Reservations &reservations)
@@ -215,6 +241,7 @@ void cancelReservation(const HikeList &hikeList, MemberList &memberList, Reserva
 void askToReserve(const HikeList &hikeList, MemberList &memberList, Reservations &reservations)
 {
   char reserve;
+  cout << "\n";
   cout << "Would you like to make a reservation? (y/n): ";
   cin >> reserve;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -225,8 +252,14 @@ void askToReserve(const HikeList &hikeList, MemberList &memberList, Reservations
   }
   else if (tolower(reserve) == 'n')
   {
-    // Not sure if this is what she means in the requirement...
-    cout << "Press any key to continue . . .\n";
-    cin.get(); // Wait for any keypress
+    showAnyKeysToContinue();
   }
+}
+
+void showAnyKeysToContinue()
+{
+  // Not sure if this is what she means in the requirement...
+  cout << "\n";
+  cout << "Press any key to continue . . .\n";
+  cin.get(); // Wait for any keypress
 }

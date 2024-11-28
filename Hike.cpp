@@ -14,7 +14,6 @@
 #include "Hike.h"
 
 #include <iostream>
-#include <cctype>
 
 using namespace std;
 
@@ -23,7 +22,7 @@ ostream &operator<<(ostream &out, const Hike &aHike)
   string difficultyDisplay;
 
   // Map difficulty character to a string representation
-  switch (tolower(aHike.difficulty))
+  switch (aHike.difficulty)
   {
   case 'e':
     difficultyDisplay = "easy";

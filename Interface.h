@@ -25,4 +25,7 @@ void viewReservation(const HikeList &hikeList, const MemberList &memberList, con
 void cancelReservation(const HikeList &hikeList, MemberList &memberList, Reservations &reservations);
 void askToReserve(const HikeList &hikeList, MemberList &memberList, Reservations &reservations);
 
+// Utils
+void showAnyKeysToContinue();
+
 #endif

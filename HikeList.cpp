@@ -84,10 +84,13 @@ void HikeList::printByLocation(const string &location) const
                 });
     if (currentIter != endIter)
     {
-      cout << "\t" << currentIter->first.getHikeName() << "(" << currentIter->first.getLocation() << ")" << endl;
-      cout << "\t Difficulty: " << currentIter->first.getDifficulty() << "\n"
-           << "\t Duration: " << currentIter->first.getDuration() << " day(s)\n"
-           << "\t Price (per person): $ " << fixed << setprecision(2) << currentIter->second << "\n\n";
+
+      cout << currentIter->first
+           << "\t" << "  " << fixed << setprecision(2) << "Price (per person): $ " << currentIter->second << "\n";
+      // cout << "\t" << currentIter->first.getHikeName() << "(" << currentIter->first.getLocation() << ")" << endl;
+      // cout << "\t Difficulty: " << currentIter->first.getDifficulty() << "\n"
+      //      << "\t Duration: " << currentIter->first.getDuration() << " day(s)\n"
+      //      << "\t Price (per person): $ " << fixed << setprecision(2) << currentIter->second << "\n\n";
 
       ++currentIter;
     }

@@ -90,8 +90,8 @@ void Reservations::printReservation(int reservation, const HikeList &hikeList, c
 
     hikeList.printByHikeName(hikeName);
 
-    std::cout << "  $" << std::fixed << std::setprecision(2) << price << "\n\n";
-    std::cout << "Discounted price using points: $" << std::fixed << std::setprecision(2) << discountedPrice << "\n";
+    std::cout << "\n"
+              << "\tDiscounted price using points: $" << std::fixed << std::setprecision(2) << discountedPrice << "\n";
   }
   else
   {
