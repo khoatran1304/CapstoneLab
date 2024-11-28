@@ -51,7 +51,7 @@ private:
 // Class Reservations
 class Reservations {
 public:
-    Reservations::Reservations() : first(nullptr), last(nullptr), count(0) {}
+    Reservations() : first(nullptr), last(nullptr), count(0) {}
 
     int addReservation(int memberID, const std::string &hikeName);
     void cancelReservation(int reservation);
