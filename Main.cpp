@@ -16,6 +16,7 @@
 #include "Member.h"
 #include "MemberList.h"
 #include "Reservations.h"
+#include "Interface.h"
 
 #include <iostream>
 #include <cassert>
@@ -173,9 +174,42 @@ void testReservations()
   std::cout << "Assertion passed: res5 == 50002\n";
 }
 
+void testInterface () {
+    HikeList hikeList;
+    MemberList memberList;
+    Reservations reservations;
+
+    // Populate hikeList with some hikes (you can add more as needed)
+    hikeList.addHike("California", "Yosemite", 2, 's', 120.00);
+    hikeList.addHike("Wyoming", "Yellowstone", 1, 'e', 60.00);
+    hikeList.addHike("Utah", "Zion", 1, 'm', 90.00);
+    hikeList.addHike("Arizona", "Grand Canyon", 3, 's', 150.00);
+    hikeList.addHike("Colorado", "Rocky Mountains", 1, 'e', 80.00);
+
+    // Populate memberList with some members (you can add more as needed)
+    memberList.addMember("John", "Doe", 50);
+    memberList.addMember("Jane", "Smith", 120);
+    memberList.addMember("Bob", "Brown", 30);
+
+    // Add initial reservations (optional for testing)
+    reservations.addReservation(111, "Yosemite");
+    reservations.addReservation(112, "Grand Canyon");
+
+    // Run the interface to interact with the user
+    processReservation(hikeList, memberList, reservations);
+}
+
+
 int main()
 {
-  testDefaultImplementations();
-  testReservations();
+  // testDefaultImplementations();
+  // testReservations();
+  testInterface();
   return 0;
 }
+
+
+#include "Interface.h"
+#include "HikeList.h"
+#include "MemberList.h"
+#include "Reservations.h"
