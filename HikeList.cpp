@@ -56,17 +56,17 @@ double HikeList::getPrice(const string &hikeName) const
 
 void HikeList::printAllLocations() const
 {
-  // Assumption: The list is non - empty.
-  // Output must be as shown below.Use the tab escape sequence(\t) to
-  // indent.
-
-  auto endIter = hikeList.end();
-  auto currentIter = hikeList.begin();
-  while (currentIter != endIter)
+  if (hikeList.empty())
   {
-    cout << "\t" << currentIter->first.getLocation() << "\n";
+    cout << "No hikes available.\n";
+    return;
+  }
 
-    currentIter = hikeList.upper_bound(currentIter->first);
+  auto it = hikeList.begin();
+  while (it != hikeList.end())
+  {
+    cout << "\t" << it->first.getLocation() << "\n";
+    it = hikeList.upper_bound(it->first);
   }
 }
 
@@ -84,9 +84,11 @@ void HikeList::printByLocation(const string &location) const
                 });
     if (currentIter != endIter)
     {
-      cout << currentIter->first << "\t" << "  " << fixed
-           << setprecision(2) << "Price (per person): $ "
-           << currentIter->second << "\n";
+      cout << "\t" << currentIter->first.getHikeName() << "(" << currentIter->first.getLocation() << ")" << endl;
+      cout << "\t Difficulty: " << currentIter->first.getDifficulty() << "\n"
+           << "\t Duration: " << currentIter->first.getDuration() << " day(s)\n"
+           << "\t Price (per person): $ " << fixed << setprecision(2) << currentIter->second << "\n\n";
+
       ++currentIter;
     }
   }
@@ -129,10 +131,7 @@ void HikeList::printByDifficulty(char difficulty) const
   {
     if (hikePair.first.getDifficulty() == difficulty)
     {
-      cout << "\t" << "(" << difficulty << ") "
-           << hikePair.first.getHikeName() + ", " +
-                  hikePair.first.getLocation()
-           << "\n";
+      cout << "\t(" << difficulty << ") " << hikePair.first.getLocation() << "\n";
     }
   }
 }
