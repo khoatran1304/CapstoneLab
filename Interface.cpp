@@ -218,6 +218,7 @@ void viewReservation(const HikeList &hikeList, const MemberList &memberList, con
   int reservation;
   cout << "Enter your reservation number: ";
   cin >> reservation;
+
   reservations.printReservation(reservation, hikeList, memberList);
   showAnyKeysToContinue();
 }
@@ -227,10 +228,13 @@ void cancelReservation(const HikeList &hikeList, MemberList &memberList, Reserva
   int reservation;
   cout << "Enter your reservation number: ";
   cin >> reservation;
+
   reservations.printReservation(reservation, hikeList, memberList);
+
   char confirm;
   cout << "Are you sure you want to cancel this reservation? (y/n): ";
   cin >> confirm;
+
   if (tolower(confirm) == 'y')
   {
     reservations.cancelReservation(reservation);
