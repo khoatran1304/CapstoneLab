@@ -14,22 +14,25 @@
 #include "HikeList.h"
 
 #include <algorithm>
-#include <iomanip>  // Include this header for setprecision
+#include <iomanip> // Include this header for setprecision
 
 using namespace std;
 
-void HikeList::addHike(const Hike& hike, double price) {
+void HikeList::addHike(const Hike& hike, double price)
+{
   // ascending order by location ?
   hikeList.insert(make_pair(hike, price));
 }
 
 void HikeList::addHike(const string& location, const string& hikeName,
-                       int duration, char difficulty, double price) {
+                       int duration, char difficulty, double price)
+{
   Hike newHike(location, hikeName, duration, difficulty);
   hikeList.insert(make_pair(newHike, price));
 }
 
-double HikeList::getPrice(const string& hikeName) const {
+double HikeList::getPrice(const string& hikeName) const
+{
   // Assumption:
   //     The list is non - empty.
   //     The hike exists in the list.
@@ -48,7 +51,8 @@ double HikeList::getPrice(const string& hikeName) const {
   return 0;
 }
 
-void HikeList::printAllLocations() const {
+void HikeList::printAllLocations() const
+{
   // Assumption: The list is non - empty.
   // Output must be as shown below.Use the tab escape sequence(\t) to
   // indent.
@@ -62,7 +66,8 @@ void HikeList::printAllLocations() const {
   }
 }
 
-void HikeList::printByLocation(const string& location) const {
+void HikeList::printByLocation(const string& location) const
+{
   auto endIter = hikeList.end();
   auto currentIter = hikeList.begin();
   while (currentIter != endIter) {
@@ -78,15 +83,16 @@ void HikeList::printByLocation(const string& location) const {
   }
 }
 
-void HikeList::printByDuration() const {
+void HikeList::printByDuration() const
+{
   multimap<int, string> tempMultimap;
 
   string displayLocation;
 
   for (const auto& hikePair : hikeList) {
-    tempMultimap.insert(make_pair(
-        hikePair.first.getDuration(),
-        hikePair.first.getHikeName() + ", " + hikePair.first.getLocation()));
+    tempMultimap.insert(make_pair(hikePair.first.getDuration(),
+                                  hikePair.first.getHikeName() + ", " +
+                                      hikePair.first.getLocation()));
   }
 
   for (const auto& pair : tempMultimap) {
@@ -94,7 +100,8 @@ void HikeList::printByDuration() const {
   }
 }
 
-void HikeList::printByDuration(int days) const {
+void HikeList::printByDuration(int days) const
+{
   for (const auto& hikePair : hikeList) {
     if (hikePair.first.getDuration() == days) {
       cout << hikePair.first << "\n";
@@ -102,7 +109,8 @@ void HikeList::printByDuration(int days) const {
   }
 }
 
-void HikeList::printByDifficulty(char difficulty) const {
+void HikeList::printByDifficulty(char difficulty) const
+{
   for (const auto& hikePair : hikeList) {
     if (hikePair.first.getDifficulty() == difficulty) {
       cout << "\t" << "(" << difficulty << ") "
@@ -112,7 +120,8 @@ void HikeList::printByDifficulty(char difficulty) const {
   }
 }
 
-void HikeList::printByPrice() const {
+void HikeList::printByPrice() const
+{
   multimap<double, pair<string, string>> tempMultimap;
 
   for (const auto& hikePair : hikeList) {
@@ -128,7 +137,8 @@ void HikeList::printByPrice() const {
   }
 }
 
-void HikeList::printByHikeName(const string& hikeName) const {
+void HikeList::printByHikeName(const string& hikeName) const
+{
   auto iter = find_if(hikeList.begin(), hikeList.end(),
                       [hikeName](const pair<Hike, double> pair) {
                         return pair.first.getHikeName() == hikeName;
@@ -140,4 +150,7 @@ void HikeList::printByHikeName(const string& hikeName) const {
   }
 }
 
-void HikeList::clearList() { hikeList.clear(); }
+void HikeList::clearList()
+{
+  hikeList.clear();
+}
