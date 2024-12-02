@@ -1,14 +1,14 @@
 /*
-		Minh Team
+	Tired Asians
 
-		Tran, Minh (Team Leader)
-		Tran, Tim // member 2
-		Nguyen, Huy // member 3
+	Tran, Minh  (Team Leader)
+	Tran, Tim   // member 2
+	Nguyen, Huy // member 3
 
-		Fall 2024
-		CS A250 - C++ 2
+	Fall 2024
+	CS A250 - C++ 2
 
-		Outdoor Adventures - Part B
+	Outdoor Adventures
 */
 
 #ifndef RESERVATIONS_H
@@ -20,7 +20,7 @@
 #include <string>
 #include <iostream>
 
-const int INITIAL_RESERVATION_NO = 50001;
+const int INITIAL_RESERVATION_NO = 5001;
 
 class Node
 {

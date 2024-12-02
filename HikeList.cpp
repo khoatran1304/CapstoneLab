@@ -1,8 +1,8 @@
 /*
     Tired Asians
 
-    Tran, Minh (Team Leader)
-    Tran, Tim // member 2
+    Tran, Minh  (Team Leader)
+    Tran, Tim   // member 2
     Nguyen, Huy // member 3 and so on
 
     Fall 2024
@@ -20,7 +20,6 @@ using namespace std;
 
 void HikeList::addHike(const Hike &hike, double price)
 {
-  // ascending order by location ?
   hikeList.insert(make_pair(hike, price));
 }
 
@@ -33,10 +32,6 @@ void HikeList::addHike(const string &location, const string &hikeName,
 
 double HikeList::getPrice(const string &hikeName) const
 {
-  // Assumption:
-  //     The list is non - empty.
-  //     The hike exists in the list.
-
   auto endIter = hikeList.end();
 
   auto iter =
@@ -56,10 +51,6 @@ double HikeList::getPrice(const string &hikeName) const
 
 void HikeList::printAllLocations() const
 {
-  // Assumption: The list is non - empty.
-  // Output must be as shown below.Use the tab escape sequence(\t) to
-  // indent.
-
   auto endIter = hikeList.end();
   auto currentIter = hikeList.begin();
   while (currentIter != endIter)
@@ -172,4 +163,7 @@ void HikeList::printByHikeName(const string &hikeName) const
   }
 }
 
-void HikeList::clearList() { hikeList.clear(); }
+void HikeList::clearList() 
+{ 
+    hikeList.clear(); 
+}
