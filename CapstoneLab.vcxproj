@@ -137,7 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hike.h" />
+    <ClInclude Include="HikeReader.h" />
     <ClInclude Include="Member.h" />
+    <ClInclude Include="MemberReader.h" />
+    <ClInclude Include="ReservationReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
