@@ -19,18 +19,20 @@
 
 class Hike
 {
-  friend std::ostream &operator<<(std::ostream &out, const Hike &aHike);
+  friend std::ostream& operator<<(std::ostream& out, const Hike& aHike);
 
 public:
-  Hike(const std::string &theLocation, const std::string &theHikeName, int theDuration, char theDifficulty)
-      : location(theLocation), hikeName(theHikeName), duration(theDuration), difficulty(theDifficulty) {}
+  Hike(const std::string& theLocation, const std::string& theHikeName,
+       int theDuration, char theDifficulty)
+      : location(theLocation), hikeName(theHikeName), duration(theDuration),
+        difficulty(theDifficulty){}
 
   std::string getLocation() const;
   int getDuration() const;
   char getDifficulty() const;
   std::string getHikeName() const;
 
-  bool operator<(const Hike &other) const;
+  bool operator<(const Hike& other) const;
 
 private:
   std::string location;

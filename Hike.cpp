@@ -17,25 +17,25 @@
 
 using namespace std;
 
-ostream &operator<<(ostream &out, const Hike &aHike)
+ostream& operator<<(ostream& out, const Hike& aHike)
 {
   string difficultyDisplay;
 
   // Map difficulty character to a string representation
-  switch (aHike.difficulty)
+  switch (aHike.difficulty) 
   {
-  case 'e':
-    difficultyDisplay = "easy";
-    break;
-  case 'm':
-    difficultyDisplay = "moderate";
-    break;
-  case 's':
-    difficultyDisplay = "strenuous";
-    break;
-  default:
-    difficultyDisplay = "unknown"; // Handle unexpected values
-    break;
+    case 'e':
+      difficultyDisplay = "easy";
+      break;
+    case 'm':
+      difficultyDisplay = "moderate";
+      break;
+    case 's':
+      difficultyDisplay = "strenuous";
+      break;
+    default:
+      difficultyDisplay = "unknown"; // Handle unexpected values
+      break;
   }
 
   // Format and output the hike details
@@ -48,15 +48,27 @@ ostream &operator<<(ostream &out, const Hike &aHike)
   return out;
 }
 
-string Hike::getLocation() const { return location; }
+string Hike::getLocation() const
+{
+  return location;
+}
 
-int Hike::getDuration() const { return duration; }
+int Hike::getDuration() const
+{
+  return duration;
+}
 
-char Hike::getDifficulty() const { return difficulty; }
+char Hike::getDifficulty() const
+{
+  return difficulty;
+}
 
-string Hike::getHikeName() const { return hikeName; }
+string Hike::getHikeName() const
+{
+  return hikeName;
+}
 
-bool Hike::operator<(const Hike &other) const
+bool Hike::operator<(const Hike& other) const
 {
   return location < other.location;
 }

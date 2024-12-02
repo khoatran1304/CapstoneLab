@@ -48,16 +48,15 @@ int main()
   HikeList hikeList;
   hikeList.addHike("Alaska", "Flattop Mountain Trail", 1, 'm', 1280);
   hikeList.addHike("Arizona", "South Kaibab Trail", 6, 'd', 4800);
-  hikeList.addHike("Georgia", "Blood Mountain via Appalachian Trail",
-                   4, 'm', 1500);
+  hikeList.addHike("Georgia", "Blood Mountain via Appalachian Trail", 4, 'm',
+                   1500);
   hikeList.addHike("Maine", "Precipice Trail", 2, 'd', 1000);
   hikeList.addHike("Minnesota", "Oberg Mountain Loop", 2, 'e', 230);
   hikeList.addHike("Montana", "Glacier", 4, 'e', 3990.00);
   hikeList.addHike("Utah", "Arches", 3, 'm', 1488);
   hikeList.addHike("Utah", "Zion", 3, 's', 334);
   hikeList.addHike("Virginia", "Old Rag Mountain Loop", 9, 'd', 2380);
-  hikeList.addHike("Washington", "Rattlesnake Ledge Trail", 4, 'm',
-                   1160);
+  hikeList.addHike("Washington", "Rattlesnake Ledge Trail", 4, 'm', 1160);
   hikeList.addHike("Wyoming", "Cascade Canyon Trail", 9, 'm', 1100);
   hikeList.addHike("California", "Yosemite", 6, 'm', 3099.00);
   hikeList.addHike("California", "Redwood", 2, 'e', 245.00);
