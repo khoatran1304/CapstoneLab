@@ -17,7 +17,8 @@
 #include <iostream>
 #include <string>
 
-class Member {
+class Member
+{
 public:
   Member(std::string newFirst, std::string newLast)
       : firstName(newFirst), lastName(newLast), id(0), points(0){}

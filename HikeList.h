@@ -20,11 +20,11 @@
 
 #include "Hike.h"
 
-class HikeList {
+class HikeList
+{
 public:
   void addHike(const Hike& hike, double price);
-  void addHike(const std::string& location, const std::string& hikeName,
-               int duration, char difficulty, double price);
+  void addHike(const std::string& location, const std::string& hikeName,int duration, char difficulty, double price);
 
   double getPrice(const std::string& hikeName) const;
   void printAllLocations() const;

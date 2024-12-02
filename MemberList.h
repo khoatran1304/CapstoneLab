@@ -22,7 +22,8 @@
 
 const int INITIAL_MEMBER_ID = 111;
 
-class MemberList {
+class MemberList
+{
 public:
   MemberList()
   {

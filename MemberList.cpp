@@ -48,7 +48,8 @@ int MemberList::getPoints(int memberID) const
       find_if(memberList->begin(), memberList->end(),
               [memberID](Member member) { return member.getID() == memberID; });
 
-  if (iter != memberList->end()) {
+  if (iter != memberList->end())
+  {
     return iter->getPoints();
   }
 
@@ -61,7 +62,8 @@ void MemberList::printMember(int memberID, const string& lastName) const
       find_if(memberList->begin(), memberList->end(),
               [memberID](Member member) { return member.getID() == memberID; });
 
-  if (iter != memberList->end() && iter->getLastName() == lastName) {
+  if (iter != memberList->end() && iter->getLastName() == lastName)
+  {
     iter->printMember();
     cout << "\t" << "Membership # " << memberID << "\n";
   }
@@ -74,7 +76,8 @@ void MemberList::clearList()
 
 MemberList::~MemberList()
 {
-  if (memberList) {
+  if (memberList)
+  {
     delete memberList;
     memberList = nullptr;
   }

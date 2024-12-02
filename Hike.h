@@ -17,14 +17,15 @@
 #include <iostream>
 #include <string>
 
-class Hike {
+class Hike
+{
   friend std::ostream& operator<<(std::ostream& out, const Hike& aHike);
 
 public:
   Hike(const std::string& theLocation, const std::string& theHikeName,
        int theDuration, char theDifficulty)
       : location(theLocation), hikeName(theHikeName), duration(theDuration),
-        difficulty(theDifficulty) {}
+        difficulty(theDifficulty){}
 
   std::string getLocation() const;
   int getDuration() const;
