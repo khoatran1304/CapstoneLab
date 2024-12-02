@@ -1,0 +1,3 @@
+PointerAlignment: Left
+BreakBeforeBraces: Stroustrup
+AllowShortFunctionsOnASingleLine: false

@@ -22,26 +22,27 @@
 
 const int INITIAL_MEMBER_ID = 111;
 
-class MemberList
-{
+class MemberList {
 public:
-  MemberList() { memberList = new std::set<Member>(); }
+  MemberList()
+  {
+    memberList = new std::set<Member>();
+  }
 
-  void addMember(const std::string &firstName,
-                 const std::string &lastName);
-  void addMember(const std::string &firstName,
-                 const std::string &lastName, int points);
+  void addMember(const std::string& firstName, const std::string& lastName);
+  void addMember(const std::string& firstName, const std::string& lastName,
+                 int points);
 
   int getLastID() const;
   int getPoints(int memberID) const;
-  void printMember(int memberID, const std::string &lastName) const;
+  void printMember(int memberID, const std::string& lastName) const;
 
   void clearList();
 
   ~MemberList();
 
 private:
-  std::set<Member> *memberList;
+  std::set<Member>* memberList;
 };
 
 #endif
