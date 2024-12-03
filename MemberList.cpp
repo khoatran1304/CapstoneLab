@@ -15,30 +15,46 @@
 
 using namespace std;
 
-int initialID = INITIAL_MEMBER_ID;
-
-void MemberList::addMember(const string &firstName,
-													 const string &lastName)
+void MemberList::addMember(const string& firstName, 
+	const string& lastName)
 {
 	Member newMember(firstName, lastName);
-	newMember.setID(initialID);
-	memberList->insert(newMember);
-
-	initialID++;
+	if (memberList->size() == 0)
+	{
+		newMember.setID(INITIAL_MEMBER_ID);
+		memberList->insert(newMember);
+	}
+	else
+	{
+		int currentSize = memberList->size();
+		newMember.setID(INITIAL_MEMBER_ID + currentSize);
+		memberList->insert(newMember);
+	}
 }
 
-void MemberList::addMember(const string &firstName,
-													 const string &lastName, int points)
+void MemberList::addMember(const string& firstName, 
+	const string& lastName, int points)
 {
 	Member newMember(firstName, lastName);
-	newMember.setID(initialID);
 	newMember.addPoints(points);
-	memberList->insert(newMember);
-
-	initialID++;
+	if (memberList->size() == 0)
+	{
+		newMember.setID(INITIAL_MEMBER_ID);
+		memberList->insert(newMember);
+	}
+	else
+	{
+		int currentSize = memberList->size();
+		newMember.setID(INITIAL_MEMBER_ID + currentSize);
+		memberList->insert(newMember);
+	}
 }
 
-int MemberList::getLastID() const { return initialID - 1; }
+int MemberList::getLastID() const 
+{ 
+	auto lastMember = memberList->rbegin();
+	return  (*lastMember).getID();
+}
 
 int MemberList::getPoints(int memberID) const
 {
