@@ -1,16 +1,3 @@
-/*
-    Tired Asians
-
-    Tran, Minh  (Team Leader)
-    Tran, Tim   // member 2
-    Nguyen, Huy // member 3
-
-    Fall 2024
-    CS A250 - C++ 2
-
-    Outdoor Adventures
-*/
-
 #ifndef INTERFACE_H
 #define INTERFACE_H
 

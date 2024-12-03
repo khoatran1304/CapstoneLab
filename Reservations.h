@@ -1,16 +1,3 @@
-/*
-	Tired Asians
-
-	Tran, Minh  (Team Leader)
-	Tran, Tim   // member 2
-	Nguyen, Huy // member 3
-
-	Fall 2024
-	CS A250 - C++ 2
-
-	Outdoor Adventures
-*/
-
 #ifndef RESERVATIONS_H
 #define RESERVATIONS_H
 
@@ -21,7 +8,6 @@
 
 const int RESERVATION_NUM = 5001;
 
-const int INITIAL_RESERVATION_NO = 5001;
 
 class Node
 {
