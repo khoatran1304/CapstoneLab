@@ -139,6 +139,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hike.h" />
+    <ClInclude Include="HikeReader.h" />
+    <ClInclude Include="Member.h" />
+    <ClInclude Include="MemberReader.h" />
+    <ClInclude Include="ReservationReader.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Reservations.h" />
