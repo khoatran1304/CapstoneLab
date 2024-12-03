@@ -13,12 +13,12 @@
 
 #include "Hike.h"
 
-#include <iostream>
 #include <cctype>
+#include <iostream>
 
 using namespace std;
 
-ostream &operator<<(ostream &out, const Hike &aHike)
+ostream& operator<<(ostream& out, const Hike& aHike)
 {
   string difficultyDisplay;
 
@@ -49,15 +49,27 @@ ostream &operator<<(ostream &out, const Hike &aHike)
   return out;
 }
 
-string Hike::getLocation() const { return location; }
+string Hike::getLocation() const
+{
+  return location;
+}
 
-int Hike::getDuration() const { return duration; }
+int Hike::getDuration() const
+{
+  return duration;
+}
 
-char Hike::getDifficulty() const { return difficulty; }
+char Hike::getDifficulty() const
+{
+  return difficulty;
+}
 
-string Hike::getHikeName() const { return hikeName; }
+string Hike::getHikeName() const
+{
+  return hikeName;
+}
 
-bool Hike::operator<(const Hike &other) const
+bool Hike::operator<(const Hike& other) const
 {
   return location < other.location;
 }

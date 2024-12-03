@@ -20,13 +20,25 @@ void Member::addPoints(int morePoints)
   points = points + morePoints;
 }
 
-void Member::setID(int newID) { id = newID; }
+void Member::setID(int newID)
+{
+  id = newID;
+}
 
-int Member::getID() const { return id; }
+int Member::getID() const
+{
+  return id;
+}
 
-string Member::getLastName() const { return lastName; }
+string Member::getLastName() const
+{
+  return lastName;
+}
 
-int Member::getPoints() const { return points; }
+int Member::getPoints() const
+{
+  return points;
+}
 
 void Member::printMember() const
 {
@@ -34,7 +46,7 @@ void Member::printMember() const
        << "\t" << "Points available: " << points << "\n";
 }
 
-bool Member::operator<(const Member &other) const
+bool Member::operator<(const Member& other) const
 {
   return id < other.id;
 }

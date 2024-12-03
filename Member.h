@@ -14,14 +14,14 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 
-#include <string>
 #include <iostream>
+#include <string>
 
 class Member
 {
 public:
   Member(std::string newFirst, std::string newLast)
-      : firstName(newFirst), lastName(newLast), id(0), points(0) {}
+      : firstName(newFirst), lastName(newLast), id(0), points(0){}
 
   void addPoints(int morePoints);
   void setID(int newID);
@@ -31,7 +31,7 @@ public:
   int getPoints() const;
 
   void printMember() const;
-  bool operator<(const Member &other) const;
+  bool operator<(const Member& other) const;
 
 private:
   int id;
