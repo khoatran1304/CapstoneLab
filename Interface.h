@@ -6,6 +6,7 @@
 #include "Reservations.h"
 
 void displayMenu();
+
 void processReservation(const HikeList& hikeList, 
   MemberList& memberList,Reservations& reservations);
 

@@ -13,7 +13,6 @@ int Reservations::addReservation(int memberID, std::string hikeName)
 		first = new Node(memberID, hikeName, nullptr, nullptr);
 		last = first;
 		first->setReservationNo(newReservationNo);
-		// Common error: Forgetting to reset pointer last.
 	}
 	
 	else

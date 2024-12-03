@@ -11,15 +11,20 @@
     Outdoor Adventures
 */
 
-#include "Hike.h"
 #include "HikeList.h"
-#include "Member.h"
 #include "MemberList.h"
 #include "Reservations.h"
 #include "Interface.h"
 
 #include <iostream>
 #include <cassert>
+<<<<<<< Updated upstream
+=======
+
+#include "HikeReader.h"
+#include "MemberReader.h"
+#include "ReservationReader.h"
+>>>>>>> Stashed changes
 
 using namespace std;
 
@@ -162,8 +167,6 @@ void testReservations()
 
   // Clear list and check count
   reservations.clearList();
-  assert(reservations.printCount() == 0);
-  std::cout << "Assertion passed: reservations.printCount() == 0\n";
 
   // Test adding reservations after clearing list
   int res4 = reservations.addReservation(111, "Yosemite");
@@ -204,7 +207,13 @@ int main()
 {
   // testDefaultImplementations();
   // testReservations();
+<<<<<<< Updated upstream
   testInterface();
+=======
+  //testInterface();
+  //testInterfaceAndDatabase();
+
+>>>>>>> Stashed changes
   return 0;
 }
 

@@ -31,6 +31,10 @@ public:
     memberList = new std::set<Member>();
   }
 
+  MemberList(const MemberList& other);
+
+  MemberList& operator=(const MemberList& other);
+
   void addMember(const std::string& firstName, 
     const std::string& lastName);
 

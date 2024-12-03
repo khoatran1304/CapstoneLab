@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BigThree.cpp" />
     <ClCompile Include="Hike.cpp" />
     <ClCompile Include="HikeList.cpp" />
     <ClCompile Include="HikeList.h" />

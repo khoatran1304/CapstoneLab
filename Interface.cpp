@@ -22,7 +22,7 @@ void displayMenu()
 }
 
 void processReservation(const HikeList& hikeList, MemberList& memberList,
-Reservations& reservations)
+                        Reservations& reservations)
 {
   bool done = false;
   int choice;
@@ -70,6 +70,7 @@ Reservations& reservations)
 
     system("pause");
   }
+}
 
   void chooseByLocation(const HikeList& hikeList, 
     MemberList& memberList, Reservations& reservations)
