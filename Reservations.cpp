@@ -1,124 +1,99 @@
 #include "Reservations.h"
 
+#include <iostream>
 #include <iomanip>
 
-int currentReservationNo = INITIAL_RESERVATION_NO;
+using namespace std;
 
-int Reservations::addReservation(int memberID, const std::string &hikeName)
+int Reservations::addReservation(int memberID, std::string hikeName)
 {
-  Node *newNode = new Node(memberID, hikeName, last, nullptr);
-  newNode->setReservationNo(currentReservationNo);
-
-  if (last != nullptr)
-  {
-    last->setNext(newNode);
-  }
-  else
-  {
-    first = newNode;
-  }
-
-  last = newNode;
-  count++;
-  currentReservationNo++;
-
-  return newNode->getReservation();
+	int newReservationNo = RESERVATION_NUM + count;
+	if (first == nullptr)
+	{
+		first = new Node(memberID, hikeName, nullptr, nullptr);
+		last = first;
+		first->setReservationNo(newReservationNo);
+		// Common error: Forgetting to reset pointer last.
+	}
+	
+	else
+	{	
+		last = new Node(memberID, hikeName, last, nullptr);
+		last->setReservationNo(newReservationNo);
+		last->getPrev()->setNext(last);
+	}
+	count++;
+	return newReservationNo;
 }
 
 void Reservations::cancelReservation(int reservation)
 {
-  if (first == nullptr)
-  {
-
-    return;
-  }
-
-  Node *nodeToDelete = findReservation(reservation);
-
-  if (nodeToDelete == nullptr)
-  {
-    return;
-  }
-
-  if (nodeToDelete->getPrev() != nullptr)
-  {
-    nodeToDelete->getPrev()->setNext(nodeToDelete->getNext());
-  }
-  else
-  {
-    first = nodeToDelete->getNext();
-  }
-
-  if (nodeToDelete->getNext() != nullptr)
-  {
-    nodeToDelete->getNext()->setPrev(nodeToDelete->getPrev());
-  }
-  else
-  {
-    last = nodeToDelete->getPrev();
-  }
-
-  delete nodeToDelete;
-  count--;
+	if (count == 1)
+	{
+		delete first;
+		last = nullptr;
+	}
+	else
+	{
+		Node* cancelledReservation = findReservation(reservation);
+		Node* prevReservation = cancelledReservation->getPrev();
+		Node* nextReservation = cancelledReservation->getNext();
+		prevReservation->setNext(nextReservation);
+		nextReservation->setPrev(prevReservation);
+		delete cancelledReservation;
+		cancelledReservation = nullptr;
+	}
 }
 
-Node *Reservations::findReservation(int reservation) const
+void Reservations::printReservation(int reservation,const HikeList& hikeList,
+	const MemberList& memberList) const
 {
-  Node *current = first;
-  while (current != nullptr)
-  {
-    if (current->getReservation() == reservation)
-    {
-      return current;
-    }
-    current = current->getNext();
-  }
-  return nullptr;
+	Node* searchedReservation = findReservation(reservation);
+	string hikeName = searchedReservation->getHikeName();
+	int memberID = searchedReservation->getMemberID();
+	hikeList.printByHikeName(hikeName);
+
+	int memberPoints = memberList.getPoints(memberID);
+	double hikePrice = hikeList.getPrice(hikeName);
+	double discountedPrice = hikePrice - (memberPoints / 100);
+	cout << fixed << setprecision(2) << 
+		"\tDiscounted price using points: $" 
+		<< discountedPrice << "\n";
+
+
 }
 
-void Reservations::printReservation(int reservation, const HikeList &hikeList, const MemberList &memberList) const
+Node* Reservations::findReservation(int reservation) const
 {
-  Node *node = findReservation(reservation);
-  if (node != nullptr)
-  {
-    std::string hikeName = node->getHikeName();
-    int memberID = node->getMemberID();
-
-    double price = hikeList.getPrice(hikeName);
-    int points = memberList.getPoints(memberID);
-    double discountedPrice = price - (points / 100.0);
-
-    hikeList.printByHikeName(hikeName);
-
-    std::cout << "\n"
-              << "\tDiscounted price using points: $" << std::fixed << std::setprecision(2) << discountedPrice << "\n";
-  }
-  else
-  {
-    std::cout << "Reservation not found." << std::endl;
-  }
-}
-
-int Reservations::printCount() const
-{
-  return count;
+	Node* searchedReservation = first;
+	bool done = false;
+	while (searchedReservation != nullptr && !done)
+	{
+		if (reservation == searchedReservation->getReservation())
+			done = true;
+		searchedReservation = searchedReservation->getNext();
+	}
+	return searchedReservation;
 }
 
 void Reservations::clearList()
 {
-  Node *current = first;
-  while (current != nullptr)
-  {
-    Node *temp = current;
-    current = current->getNext();
-    delete temp;
-  }
-  first = last = nullptr;
-  count = 0;
-  currentReservationNo = INITIAL_RESERVATION_NO;
+	Node* temp = first;
+	while (first != nullptr)
+	{
+		first = first->getNext();
+		delete temp;
+		temp = first;
+	}
+
+	last = nullptr;
+	count = 0;
 }
 
 Reservations::~Reservations()
 {
-  clearList();
+	delete first;
+	delete last;
+	first = nullptr;
+	last = nullptr;
 }

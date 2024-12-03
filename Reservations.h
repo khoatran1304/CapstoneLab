@@ -1,26 +1,13 @@
-/*
-		Minh Team
-
-		Tran, Minh (Team Leader)
-		Tran, Tim // member 2
-		Nguyen, Huy // member 3
-
-		Fall 2024
-		CS A250 - C++ 2
-
-		Outdoor Adventures - Part B
-*/
-
 #ifndef RESERVATIONS_H
 #define RESERVATIONS_H
 
-#include "Member.h"
 #include "MemberList.h"
 #include "HikeList.h"
-#include <string>
-#include <iostream>
 
-const int INITIAL_RESERVATION_NO = 50001;
+#include <string>
+
+const int RESERVATION_NUM = 5001;
+
 
 class Node
 {
@@ -48,27 +35,39 @@ private:
 	Node* prev;
 };
 
-// Class Reservations
-class Reservations {
+
+class Reservations
+{
 public:
-    Reservations() : first(nullptr), last(nullptr), count(0) {}
+	Reservations() : first(nullptr), last(nullptr), count(0) {};
 
-    int addReservation(int memberID, const std::string &hikeName);
-    void cancelReservation(int reservation);
+	Reservations(const Reservations& other);
 
-    void printReservation(int reservation, const HikeList &hikeList, const MemberList &memberList) const;
-		int printCount() const;
+	int addReservation(int memberID, std::string hikeName);
 
-    void clearList();
+	void cancelReservation(int reservation);
 
-    ~Reservations();
+	void printReservation(int reservation, const HikeList& hikeList, const MemberList& memberList) const;
+
+	void clearList();
+
+	~Reservations();
+
+	
 
 private:
-    Node* findReservation(int reservation) const;
 
-    Node* first;
-    Node* last;
-    int count;
+	Node* first;
+	Node* last;
+	int count;
+
+	Node* findReservation(int reservation) const;
+
+	void copyCallingObjIsEmpty(const Reservations& other);
+
+	void copyObjectsSameLength(const Reservations& other);
+
+	void copyCallingObjShorter(const Reservations& other);
 };
 
 #endif
