@@ -20,6 +20,9 @@
 
 #include <iostream>
 #include <cassert>
+#include "HikeReader.h"
+#include "MemberReader.h"
+#include "ReservationReader.h"
 
 using namespace std;
 
@@ -174,7 +177,8 @@ void testReservations()
   std::cout << "Assertion passed: res5 == 50002\n";
 }
 
-void testInterface () {
+void testInterface() 
+{
     HikeList hikeList;
     MemberList memberList;
     Reservations reservations;
@@ -199,17 +203,32 @@ void testInterface () {
     processReservation(hikeList, memberList, reservations);
 }
 
+void testInterfaceAndDatabase() 
+{
+    HikeList hikeList;
+    MemberList memberList;
+    Reservations reservations;
+
+    // Populate hikeList with some hikes (you can add more as needed)
+    getHikeData(hikeList);
+
+    // Populate memberList with some members (you can add more as needed)
+    getMemberData(memberList);
+
+    // Add initial reservations (optional for testing)
+    getReservationsData(reservations);
+
+    // Run the interface to interact with the user
+    processReservation(hikeList, memberList, reservations);
+}
+
 
 int main()
 {
   // testDefaultImplementations();
   // testReservations();
-  testInterface();
+  //testInterface();
+  testInterfaceAndDatabase();
+
   return 0;
 }
-
-
-#include "Interface.h"
-#include "HikeList.h"
-#include "MemberList.h"
-#include "Reservations.h"

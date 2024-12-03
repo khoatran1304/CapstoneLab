@@ -1,14 +1,14 @@
 /*
-    Minh Team
+    Tired Asians
 
-    Tran, Minh (Team Leader)
-    Lastname, Firstname // member 2
-    Lastname, Firstname // member 3 and so on
+    Tran, Minh  (Team Leader)
+    Tran, Tim   // member 2
+    Nguyen, Huy // member 3 and so on
 
     Fall 2024
     CS A250 - C++ 2
 
-    Outdoor Adventures - Part A
+    Outdoor Adventures
 */
 
 #include "Hike.h"

@@ -56,5 +56,25 @@
     <ClInclude Include="Reservations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HikeReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemberReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReservationReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="hikes_database.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="members_database.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="reservations_database.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
